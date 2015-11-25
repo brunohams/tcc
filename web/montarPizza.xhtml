@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <h1> Monte sua pizza </h1>
+
+        <div id="pizzaimagem">
+            <div id="parte1" class="partespizza" style="float: left; border-top: none; border-left: none; background-position: left top; background-image: url(#{resource['imgsPizza/']})">
+
+            </div>
+            <div id="parte2" class="partespizza" style="float: left ; border-top: none; border-right: none; background-position: right top; background-image: url(resources/imgsPizza/)"> 
+
+            </div>
+            <div id="parte3" class="partespizza" style="float:right; border-bottom: none; border-right: none; background-position: right bottom; background-image: url(resources/imgsPizza/imgpadrao.png)">
+
+            </div>
+            <div id="parte4" class="partespizza" style="float:right; border-bottom: none; border-left: none;  background-position: left bottom; background-image: url(resources/imgsPizza/imgpadrao.png)" >
+
+            </div>
+        </div>
+
+        <h:outputText class="titulo" value="AS MAIS POPULARES"></h:outputText>
+        <div class="divcontent" style="height: 60%;">
+
+            <h:form>
+                <ui:repeat value="#{saborBean.sabores}" var="sabor" varStatus="status">
+                    <div  style="width: 150px; height: 150px; border: 1px solid black" align="center">
+                        Nome:
+                        <h:outputText value="#{sabor.nome}"/>
+                        Descrição:
+                        <h:outputText value="#{sabor.descricao}"/>
+                        <h:graphicImage class="icones" url="resources/imgsPizza/#{sabor.imagem}"/>
+                        <h:commandButton id="adicionarSabor" value="Add Sabor" actionListener="#{pizzaBean.addSaborPizza(sabor)}"/>
+                    </div>
+                </ui:repeat>
+            </h:form>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

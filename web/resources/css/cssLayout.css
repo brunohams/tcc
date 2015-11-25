@@ -1,0 +1,475 @@
+#barrasup1 {
+    position: relative;
+    background-color: #ed1f29;
+    color: white;
+    padding: 5px;
+    height: 15px;
+    font-size: 13px;
+}
+
+#barrasup2 {
+    position: relative;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    height: 170px;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-bottom: #5d0202;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("#{resource['imgs/bannerprotitipo.jpg']}"); no-repeat
+    background-size: 100% auto;
+}
+
+#barramenu {
+    position: relative;
+    background-color: #5d0202;
+    color: white;
+    height: 4%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    display: table;
+    border-right:  1px solid black;    
+}
+
+#bottom {
+    position: relative;
+    background-color: gray;
+    padding: 5px;
+    height: 20px;
+    margin: 10px 0px 0px 0px;
+}
+
+#left {
+    float: left;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#right {
+    float: right;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+.center_content {
+    position: relative;
+    background-image: url("#{resource['imgs/Background.png']}"); no-repeat
+    background-color: #dddddd;
+    margin-left: 15%;
+    margin-right: 15%;
+    border: #5d0202;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.left_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin-left: 170px;
+}
+
+.right_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+}
+
+#top a:link, #top a:visited {
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+    color: black;
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+.botoes {
+    position: relative;
+    background: transparent;
+    font-size: 16px;
+    color: white;
+    width: 150px;
+    text-align: center;
+    height: 40px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;   
+    box-sizing: border-box; 
+    padding: 12px 15px;
+    border-left: 1px solid;
+    border-style: none solid none none;
+    cursor: pointer;
+    transition: background-color 0.4s ease 0s;
+}
+
+.botoes:active{
+    color: black;
+}
+
+.botoes:hover{
+    background-color: #ac0005;
+
+}
+
+.botoessecundario{
+    background: #CC6600;
+    width: 250px;
+    height: 70px;
+    margin-bottom: 5px;
+}
+.botoes:active{
+    color: black;
+}
+
+.botoes:hover{
+    background-color: #ac0005;
+
+}
+.ui-button{
+    border: none;
+    position: relative;
+    background: transparent;
+    font-weight: bold;
+    font-size: 16px;
+    font-weight: normal;
+    text-shadow: none;
+    color: white;
+    width: 150px;
+    height: 50px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;   
+    box-sizing: border-box; 
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+    margin: auto;
+    border: white;
+    border-left: 2px solid;
+    border-style: none none none solid;
+    transition: all 0.4s ease 0s;
+    border-radius: 0;
+}
+
+.ui-button-text-icon-right .ui-button-text {
+    padding-right: 0 !important ;
+    padding-bottom: 20px !important;
+    padding-top: 0 !important;
+    padding-left: 20px !important;
+}
+
+.ui-button:active{
+    color: black;
+    font-weight: bold;
+}
+
+*:focus {
+    outline: 0;
+}
+
+.ui-grid-col-1{
+    float: left
+}
+
+.ui-grid-col-4{
+    float: left;
+    border: 1px solid black;
+    height: 80%;
+    width: 25%;
+    margin: 25px;
+    margin-left: 40px;
+    margin-right: 30px;
+}
+
+.divcontent{
+    position: relative;
+    padding: 5px;
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 40%;
+    background-color: white;
+    border: #af9656;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 5px;
+}
+
+.titulo{
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    color: #7f5f00;
+    margin-top: 20px;
+}
+
+#background{
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+.form {
+    margin: 0;
+    padding: 0;
+}
+
+.form button {
+    height: 40px;
+}
+
+.ui-menuitem-link{
+    background: white;
+    border-radius: 0;
+}
+
+.ui-menu{
+    background: #5d0202;
+    padding: 5px;
+    border-radius: 0;
+    border: none;
+}
+
+.telacadastrologin{
+    position: absolute;
+    margin: 0 auto;
+    background-color: red;
+    height: 85%;
+    width: 30%;
+    top: 150px;
+    left: 35%;
+    z-index: 2;
+}
+
+#black_overlay{
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 200%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+}
+
+#cadastro_content {
+    display: none;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    width: 360px;
+    min-width: 350px;
+    height: 115%;
+    border: 1px solid black;
+    background-color: white;
+    z-index:1002;
+    overflow: auto;
+}
+
+#cadastroFuncionario_content {
+    display: none;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    width: 357px;
+    min-width: 350px;
+    height: 127%;
+    border: 1px solid black;
+    background-color: white;
+    z-index:1002;
+    overflow: auto;
+}
+
+#login_content {
+    display: none;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    width: 357px;
+    min-width: 350px;
+    height: 50%;
+    border: 1px solid black;
+    background-color: white;
+    z-index:1002;
+    overflow: auto;
+}
+
+@media screen and (max-width: 500px) {  /* -- If the view port is less than 350px wide (portrait on phone) then display the following styles -- */
+    #cadastro_content{
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    #cadastroFuncionario_content{
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    #login_content{
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    #barrasup2{
+        background-image: url("#{resource['imgs/bannermobile.png']}");
+        background-repeat: no-repeat; 
+    }
+    #cadastroFunc{
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+}
+
+.logo{
+    height: auto;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.negado{
+    height: auto;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.formbotoes{
+    height: 52px;
+    width: 108px;
+    font-weight: bolder;
+    text-align: center;      
+    border: 0;
+}
+
+.formbotoes:hover{
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.formbotoes:active{
+    background-color: transparent;
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+
+.seta-direita-verde {
+    display: inline-block;
+    position: relative;
+    background: green;
+    width: 114px;
+    margin: 0;
+    height: 52px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin-top: 8%;
+}
+
+.seta-direita-verde:after {
+    content: '';
+    display: block;  
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    margin-top: -25px;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 20px solid green;
+}
+
+.seta-esquerda-vermelha {
+    display: inline-block;
+    position: relative;
+    background-color: red;
+    width: 114px;
+    margin: 0;
+    height: 52px;
+    margin-top: 5%;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin-top: 8%;
+}
+
+.seta-esquerda-vermelha:after {
+    content: '';
+    display: block;  
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-top: -25px;
+    width: 0;
+    height: 0;
+    border: 1px solid transparent;
+    border-top: 25px solid transparent;
+    border-right: 20px solid red;
+    border-bottom: 25px solid transparent;
+    border-left: 0px solid transparent;
+}
+
+.ui-inputfield{
+    width: 50%;
+    text-align: left;
+}
+
+.icones {
+    height: 30px;
+    width: 30px;
+}
+
+.icones2 {
+    height: 90px;
+    width: 90px;
+}
+.ui-overlay-visible table {
+    background-color: #99ffff;
+}
+
+#pizzaimagem{
+    border: 5px solid black;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+
+}
+.partespizza{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 1px solid black;
+    width: 125px;
+    height: 125px;
+}
+#adicionarCar{
+    color: black;
+    background: white;
+}
+.botaocarrinho{
+    border-left: 1px solid;
+    border-style: none none none solid;
+    
+
+}

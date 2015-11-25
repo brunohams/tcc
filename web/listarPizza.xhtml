@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <h:form enctype="multipart/form-data">
+            <p:dataTable id="tbPizza" var="pizza" value="#{pizzaBean.pizzas}" rows="10"
+                         paginator="true"
+                         paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,20">
+                <p:column headerText="Id">
+                    <h:outputText value="#{pizza.id}" />
+                </p:column>
+
+                <p:column headerText="Nome">
+                    <h:outputText value="#{pizza.nome}" />
+                </p:column>
+
+                <p:column headerText="Tamanho:">
+                    <h:outputText value="#{pizza.tamanho}"/>
+                </p:column>
+
+                <p:column headerText="Preço">
+                    <h:outputText value="#{pizza.preco}" />
+                </p:column>
+
+                <p:column headerText="Ações">
+                    <p:commandButton icon="ui-icon-pencil" action="#{pizzaBean.getIdSelected()}" oncomplete="PF('pizzaDialog').show()" update="@form">
+                        <f:setPropertyActionListener target="#{pizzaBean.idSelectedPizza}" value="#{pizza.id}"/>
+                    </p:commandButton>
+
+                    <p:commandButton icon="ui-icon-trash" actionListener="#{pizzaBean.excluir(pizza)}" update="tbPizza">
+                        <p:confirm header="Excluir Pizza" icon="ui-icon-alert" message="Confirmar exlcusão:"/>
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+
+            <p:dialog id="dialogoPizza" header="Pizza - #{pizzaBean.pizza.nome}" widgetVar="pizzaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <h:panelGrid columns="2">
+
+                    <h:inputHidden value="#{pizzaBean.pizza.tamanho}"/>
+                    <h:inputHidden value="#{pizzaBean.pizza.id}"/>
+
+                    <h:outputLabel for="id" value="Id:" style="margin-left: 10px"/>
+                    <h:inputText id="id" value="#{pizzaBean.pizza.id}" readonly="true" style="width: 50%; margin-top: 3px; margin-bottom: 5px"/>
+
+                    <h:outputLabel for="nome" value="Nome:" style="margin-left: 10px"/>
+                    <p:inputText id="nome" value="#{pizzaBean.pizza.nome}" style="width: 50%; margin-top: 3px; margin-bottom: 5px"/>
+
+                    <h:outputLabel for="tamanho" value="Tamanho:" style="margin-left: 10px"/>
+                    <p:selectOneMenu id="tamanho" class="selectmenu" value="#{pizzaBean.pizza.tamanho}" effect="fold" editable="true">
+                        <f:selectItem itemLabel="Pequena" itemValue="pequena" />
+                        <f:selectItem itemLabel="Média" itemValue="media"/>
+                        <f:selectItem itemLabel="Grande" itemValue="grande"/>
+                        <f:selectItem itemLabel="Gigante" itemValue="gigante" />
+                    </p:selectOneMenu>
+
+
+                    <h:outputLabel for="menu" value="Sabores:" />
+                    <p:selectCheckboxMenu id="menu" value="#{pizzaBean.saboresSelecionados}" label="Sabores"
+                                          filter="true" 
+                                          filterMatchMode="startsWith" panelStyle="width:250px"
+                                          converter="saborConverter">
+                        <f:selectItems value="#{saborBean.sabores}" var="sabor" itemLabel="#{sabor.nome}" itemValue="#{sabor}"/>
+                    </p:selectCheckboxMenu>
+
+
+
+                    <h:outputLabel for="preco" value="Preço:" style="margin-left: 10px"/>
+                    <p:inputMask id="preco" value="#{pizzaBean.pizza.preco}" mask="99.99" style="width: 50%; margin-top: 3px; margin-bottom: 5px"/>
+
+                    <p:commandButton value="Salvar" icon="ui-icon-check" actionListener="#{pizzaBean.alterar()}" onclick="PF('pizzaDialog').hide();" update="tbPizza"/>
+                    <p:commandButton value="Cancelar" icon="ui-icon-close" onclick="PF('pizzaDialog').hide();"/>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

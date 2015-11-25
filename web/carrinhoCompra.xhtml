@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+
+        <h:outputText class="titulo" value="Pizzas"></h:outputText>
+        <br/>
+        <h:form>
+            <p:dataTable id="tbCarrinhoPizza" var="car" value="#{carrinhoBean.carrinho.pizzascarrinho}" rows="5"
+                         paginator="true"
+                         paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,20">
+
+                <p:column headerText="Pizza">
+                    <h:outputText value="#{car.nome}" />
+                </p:column>
+
+                <p:column headerText="Tamanho">
+                    <h:outputText value="#{car.tamanho}" />
+                </p:column>
+
+                <p:column headerText="Preço">
+                    <h:outputText value="R$ #{car.preco}" />
+                </p:column>
+
+                <p:column headerText="Ações">
+                    <p:commandButton icon="ui-icon-trash" actionListener="#{carrinhoBean.excluirPizzaCarrinho(car)}" update="@form"/>
+                </p:column>
+            </p:dataTable>
+            
+            <h:outputText class="titulo" value="Produtos"></h:outputText>
+            <br/>
+            
+            <p:dataTable id="tbCarrinhoProduto" var="produto" value="#{carrinhoBean.carrinho.produtoscarrinho}" rows="5"
+                         paginator="true"
+                         paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,20">
+
+                <p:column headerText="Produto">
+                    <h:outputText value="#{produto.nome}"/>
+                </p:column>
+
+                <p:column headerText="Categoria">
+                    <h:outputText value="#{produto.categoria}"/>
+                </p:column>
+
+                <p:column headerText="Marca">
+                    <h:outputText value="#{produto.marca}"/>
+                </p:column>
+
+                <p:column headerText="Preço">
+                    <h:outputText value="#{produto.preco}"/>
+                </p:column>
+
+                <p:column headerText="Ações">
+                    <p:commandButton icon="ui-icon-trash" actionListener="#{carrinhoBean.exlcuirProdutoCarrinho(produto)}" update="tbCarrinhoProduto"/>
+                </p:column>
+            </p:dataTable>
+
+
+            <h:inputText value="R$ #{carrinhoBean.totalPedido}" readonly="true"  >
+            </h:inputText>
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

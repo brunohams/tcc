@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <div id="cadastroFunc" style="background-color: white; width: 350px; height: 520px">
+            <div style="border: 1px solid black; border-style: none none solid none ; width: 100%; height: 25px">
+                <h style="width: 100%; display: block; text-align: center; padding-top: 5px ">Cadastro Pizza</h>
+            </div>
+
+            <p:graphicImage class="logo" url="resources/imgs/pizzaico.png" style="margin: 0; width: 30%"/>
+
+            <div style="max-width: 100%; margin-left: 15px; margin-right: 15px">
+                <h:outputText value="Para realizar o cadastro, informe as informações requesitadas abaixo:" style="font-weight: normal"/>
+            </div>
+            <h:form id="form" enctype="multipart/form-data">
+                <p:messages id="mensagem" closable="true" showDetail="true" autoUpdate="true"/>
+                <br/>
+                <p:outputLabel for="nome" value="Nome/Sabor da Pizza:" style="margin-left: 10px"/>
+                <br/>
+                <p:inputText id="nome" required="true" value="#{pizzaBean.pizza.nome}" style="width: 50%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="tamanho" value="Tamanho: " />
+                <br/>
+                <p:selectOneMenu id="tamanho" class="selectmenu" value="#{pizzaBean.pizza.tamanho}" effect="fold" editable="true">
+                    <f:selectItem itemLabel="Pequena" itemValue="pequena" />
+                    <f:selectItem itemLabel="Média" itemValue="media"/>
+                    <f:selectItem itemLabel="Grande" itemValue="grande"/>
+                    <f:selectItem itemLabel="Gigante" itemValue="gigante" />
+                </p:selectOneMenu>
+                <br/>
+                <p:outputLabel for="preco" value="Preço:" style="margin-left: 10px"/>
+                <br/>
+                <p:inputMask id="preco" required="true" value="#{pizzaBean.pizza.preco}" mask="99.99" style="width: 50%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+
+                
+                <h:panelGrid columns="3" cellpadding="5">
+                    <h:outputLabel for="menu" value="Sabores:" />
+                    <p:selectCheckboxMenu id="menu" value="#{pizzaBean.saboresSelecionados}" label="Sabores"
+                                          filter="true" 
+                                          filterMatchMode="startsWith" panelStyle="width:250px"
+                                          converter="saborConverter">
+                        <f:selectItems value="#{saborBean.sabores}" var="sabor" itemLabel="#{sabor.nome}" itemValue="#{sabor}"/>
+                    </p:selectCheckboxMenu>
+                </h:panelGrid>
+                
+                <div style="position: relative; width: 250px">
+                    <div class="seta-direita-verde" style="float: right">
+                        <h:commandButton class="botoes formbotoes" value="Cadastrar" actionListener="#{pizzaBean.salvar()}" style="width: 108px; background: none"/>
+                    </div>
+
+                    <div class="seta-esquerda-vermelha" style="float: left; margin-right: 10px">
+                        <h:button class="botoes formbotoes" value="Voltar" onclick="document.getElementById('login_content').style.display = 'none';
+                                document.getElementById('black_overlay').style.display = 'none'"/>
+                    </div>
+                </div>
+
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

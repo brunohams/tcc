@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:outputText class="titulo" value="DO SEU JEITO"/>
+
+        <div class="divcontent"  style="margin-bottom: 5%;">
+            <div class="ui-grid ui-grid-responsive">
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4">
+                        <img src="resources/imgs/pizza3.png" style="width: 190px; height: auto; margin: 10%"/>
+                        <h:button value="Monte a sua" outcome="montarPizza"/>
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <img src="resources/imgs/glass35.png" style="width: 190px; height: auto; margin: 10%"/>
+                        <h:button value="Escolha a bebida" />
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <img src="resources/imgs/plus4.png" style="width: 190px; height: auto; margin: 10%"/>
+                        <h:button value="Escolha o adicional" outcome="escolhaAdicional"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h:outputText class="titulo" value="AS MAIS POPULARES"></h:outputText>
+        <div class="divcontent" style="height: 60%;">
+
+            <h:form>
+                <ui:repeat value="#{pizzaBean.pizzas}" var="pizza" varStatus="status">
+                    <div  style="width: 150px; height: 150px; border: 1px solid black" align="center">
+                        Nome:
+                        <h:outputText value="#{pizza.nome}"/>
+                        <br/>
+                        Preço:
+                        <h:outputText value="#{pizza.preco}"/>
+                        <br/>
+                        Tamanho:
+                        <h:outputText value="#{pizza.tamanho}"/>
+                        <!--<h:graphicImage class="icones2" url="resources/imgsPizza/{pizza.imagem}"/> -->
+                        <h:commandButton id="adicionarPizzaCar" value="Add no carrinho" actionListener="#{carrinhoBean.addPizzaCarrinho(pizza)}"/>
+                    </div>
+                </ui:repeat>
+            </h:form>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

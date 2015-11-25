@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+
+        <title>Easy Pizza - TCC Projeto</title>
+
+    </h:head>
+
+    <h:body>
+        <div id="black_overlay"></div>
+        <div id="barrasup1">
+
+            <h:form style="float:left">Seja Bem vindo! <h:outputText value="#{springBean.cliente}" style="color: blue"/>            
+
+                <a href = "javascript:void(0)" onclick = "document.getElementById('login_content').style.display = 'block';
+                        document.getElementById('black_overlay').style.display = 'block'">Login</a> ou
+                <a href = "javascript:void(0)" onclick = "document.getElementById('cadastro_content').style.display = 'block';
+                        document.getElementById('black_overlay').style.display = 'block'">Cadastro</a>
+                <!-- <h:link value="cadastro funcionario" outcome="cadastroFuncionario"/>
+                 <h:link value="cadastro pizza" outcome="cadastroPizza"/>
+                 <h:link value="cadastro produto" outcome="cadastroProduto"/>
+                 <h:link value="listar cliente" outcome="listarCliente"/>
+                 <h:link value="listar pizza" outcome="listarPizza"/>
+                 <h:link value="listar produto" outcome="listarProduto"/>
+                 <h:link value="listar funcionario" outcome="listarFuncionario"/>
+                 <h:link value="montar pizza" outcome="montarPizza"/>
+                 <h:link value="cadastro sabor" outcome="cadastroSabor"/>
+                 <h:link value="listar sabor" outcome="listarSabor"/>
+                 <h:link value="painel admin" outcome="painelAdmin"/>
+                 <h:link value="gerar relatório" outcome="gerarRelatorio"/> -->
+
+            </h:form>
+            <a href="logout" style="float: right">Sair</a>
+
+
+        </div>
+
+        <div id="cadastro_content">
+            <div style="border: 1px solid black; border-style: none none solid none ; width: 100%; height: 25px">
+                <h style="width: 100%; display: block; text-align: center; padding-top: 5px ">Cadastro Cliente</h>
+            </div>
+            <p:graphicImage class="logo" url="resources/imgs/logo.png"/>
+            <br/>
+            <div style="max-width: 100%; margin-left: 15px; margin-right: 15px">
+                <h:outputText value="Para realizar seu cadastro, informe as informações requesitadas abaixo:" style="font-weight: normal"/>
+            </div>
+
+            <h:form id="matchGrid" style="margin: 15px;">
+                <p:outputLabel for="nome" value="Nome Completo:" style="margin-left: 10px"/><br/>
+                <p:inputText id="nome" required="true" value="#{clienteBean.cliente.nome}" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="email" value="E-mail:" style="margin-left: 10px"/><br/>
+                <p:inputText id="email" required="true" value="#{clienteBean.cliente.email}" style="width: 100%; margin-top: 3px; margin-bottom: 5px">
+                    <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)"/>
+                </p:inputText>
+                <br/>
+                <p:messages id="mensagem" showDetail="true" autoUpdate="true"/>
+                <p:outputLabel for="senha" value="Senha:" style="margin-left: 10px"/>
+                <p:password id="senha" required="true" requiredMessage="Senhas não coincidem!" value="#{clienteBean.cliente.senha}" match="confirmarsenha" label="Senha" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="confirmarsenha" value="Confirmar Senha:" style="margin-left: 10px"/>
+                <p:password id="confirmarsenha" required="true" value="#{clienteBean.cliente.senha}" label="Confirmar Senha" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="endereco" value="Endereço:" style="margin-left: 10px"/><br/>
+                <p:inputText id="endereco" required="true" value="#{clienteBean.cliente.endereco}" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="complemento" value="Complemento:" style="margin-left: 10px"/><br/>
+                <p:inputText id="complemento" value="#{clienteBean.cliente.complemento}" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="cpf" value="Cpf:" style="margin-left: 10px"/><br/>
+                <p:inputMask id="cpf" required="true" value="#{clienteBean.cliente.cpf}" mask="999.999.999-99" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="cep" value="Cep:" style="margin-left: 10px"/><br/>
+                <p:inputMask id="cep" required="true" value="#{clienteBean.cliente.cep}" mask="99999 - 999" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="telefone" value="Telefone:" style="margin-left: 10px"/><br/>
+                <p:inputMask id="telefone" value="#{clienteBean.cliente.telefone}" mask="(99) 9999-9999" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="celular" value="Celular:" style="margin-left: 10px"/><br/>
+                <p:inputMask id="celular" required="true" value="#{clienteBean.cliente.celular}" mask="(99) 9999-9999?9" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="nascimento" value="Nascimento:" style="margin-left: 10px"/><br/>
+                <p:calendar id="nascimento" required="true" value="#{clienteBean.cliente.nascimento}" locale="pt" navigator="true" yearRange="c-55:" pattern="dd-MMM-yyyy" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>     
+
+                <div style="position: relative; margin-left: 10%; margin-right: 10%; margin-bottom: 10%">
+                    <div class="seta-esquerda-vermelha" style="float: left; margin-right: 10px">
+                        <h:button class="botoes formbotoes" value="Voltar" onclick="document.getElementById('login_content').style.display = 'none';
+                                document.getElementById('black_overlay').style.display = 'none'"/>
+                    </div>
+                    <div class="seta-direita-verde" style="float: right;">
+                        <p:commandButton class="botoes formbotoes" value="Cadastrar" update="matchGrid" actionListener="#{clienteBean.salvar()}" style="width: 108px;"/>
+                    </div>
+                </div>
+            </h:form>
+
+        </div>
+
+        <div id="login_content">
+            <div style="border: 1px solid black; border-style: none none solid none ; width: 100%; height: 20px">
+                <h style="width: 100%; display: block; text-align: center ">Login</h>
+            </div>
+            <p:graphicImage class="logo" url="resources/imgs/logo.png"/>
+            <br/>
+
+            <div style="max-width: 100%; margin-left: 15px; margin-right: 15px">
+                <h:outputText value="Para realizar seu login, informe seu e-mail ou nome seguido de sua senha." style="font-weight: normal"/>
+            </div>
+
+            <h:form style="margin-left: 15px; margin-right: 15px; margin-top: 10px">
+                <p:outputLabel for="nome" value="Nome" style="margin-left: 10px"/><br/>
+                <p:inputText id="nome" value="" style="width: 100%; margin-top: 3px; margin-bottom: 5px"/>
+                <br/>
+                <p:outputLabel for="senha" value="Senha" style="margin-left: 10px"/><br/>
+                <p:inputText id="senha" value="" style="width: 100%; margin-top: 3px; margin-bottom: 15px"/>
+                <br/>
+                <div style="position: relative; margin-left: 10%; margin-right: 10%; margin-bottom: 10%">
+                    <div class="seta-esquerda-vermelha" style="float: left;">
+                        <h:button class="botoes formbotoes" value="Voltar" onclick="document.getElementById('cadastro_content').style.display = 'none';
+                                document.getElementById('black_overlay').style.display = 'none'"/>
+                    </div>
+                    <div class="seta-direita-verde" style="float: right">
+                        <h:commandButton class="botoes formbotoes" value="Cadastrar" style="width: 108px;"/>
+                    </div>
+                </div>
+            </h:form>
+
+
+
+        </div>
+
+        <div id="barrasup2">
+            <!-- Barra do BANNER-->
+        </div>
+
+        <div id="barramenu">    
+            <div class="ui-grid ui-grid-responsive" >
+                <div class="ui-grid-row" >
+                    <div class="ui-grid-col-1" >
+                        <h:button  class="botoes" image="resources/imgs/home.png" style="width: 50px; border-right: 2px solid; padding: 4px" outcome="home.jsf"/>
+                    </div>
+                    <div class="ui-grid-col-1">
+                        <h:button  class="botoes" value="Seu pedido"/>
+                    </div>
+                    <div class="ui-grid-col-1">
+                        <h:button  class="botoes" value="Sobre Nós"/>
+                    </div>
+
+                    <div class="ui-grid-col-1">
+                        <h:button  class="botoes" value="Contato"/>
+                    </div>
+                    <div class="ui-grid-col-1">
+                        <h:button  class="botoes" value="Painel Admin" outcome="painelAdmin"/>
+                    </div>
+                    <div class="ui-grid-col-1" style="float: right">
+                        <h:form enctype="multipart/form-data" class="form">
+                            <p:growl id="messages" showDetail="true"/>
+
+                            <h:button class="botoes botaocarrinho" value="Carrinho" outcome="carrinhoCompra" />
+
+                        </h:form>
+                    </div>
+                    <br style="clear: both" />
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="content" class="center_content">
+
+            <div id="background" align="center">
+                <ui:insert name="content"></ui:insert>
+            </div>
+        </div>
+
+        <div id="bottom">
+            <h:outputText  value="Bruno e Matheus" style="float: left"/>
+
+            <h:outputText  value="Projeto TCC 2015" style="float: right"/>
+        </div>
+
+    </h:body>
+    <script>
+        PrimeFaces.locales['pt'] = {
+            closeText: 'Fechar',
+            prevText: 'Anterior',
+            nextText: 'Próximo',
+            currentText: 'Começo',
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+            weekHeader: 'Semana',
+            firstDay: 0,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeOnlyTitle: 'Só Horas',
+            timeText: 'Tempo',
+            hourText: 'Hora',
+            minuteText: 'Minuto',
+            secondText: 'Segundo',
+            ampm: false,
+            month: 'Mês',
+            week: 'Semana',
+            day: 'Dia',
+            allDayText: 'Todo o Dia'
+        };
+    </script>
+</html>

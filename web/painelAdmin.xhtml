@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <div>
+            <h:form style="background-color: white; width: 70%; height: 70%">
+                <div id="cadastroFunc" style="background-color: white; width: 350px; height: 500px; float: left">
+                    <div style="border: 1px solid black; border-style: none none solid none ; width: 100%; height: 25px; margin-bottom: 10px">
+                        <h style="width: 100%; display: block; text-align: center; padding-top: 5px ">Cadastros</h>
+                    </div>
+                    <h:button id="btna" class="botoes botoessecundario" value="Cadastrar um sabor" alt="Cadastra sabores" outcome="cadastroSabor"/>
+                    <p:tooltip id="toolTipFadea" for="btna" value="Cadastra sabores para as pizzas" />
+
+                    <h:button id="btnb" class="botoes botoessecundario" value="Cadastrar uma pizza" alt="Cadastra pizza" outcome="cadastroPizza"/>
+                    <p:tooltip id="toolTipFadeb" for="btnb" value="Cadastra uma pizza, seu tamanho preço e sabores." />
+
+                    <h:button id="btnc" class="botoes botoessecundario" value="Cadastrar um produto" alt="Cadastra produto" outcome="cadastroProduto"/>
+                    <p:tooltip id="toolTipFadec" for="btnc" value="Cadastra um produto, seu preço e marca." />
+
+                    <h:button id="btnd" class="botoes botoessecundario" value="Cadastrar um funcionário" alt="Cadastra funcionario" outcome="cadastroFuncionario"/>
+                    <p:tooltip id="toolTipFaded" for="btnd" value="Cadastra um funcionario com privilégios para operar o sistema." />
+                    
+                    <h:button id="btnj" class="botoes botoessecundario" value="Gerar Relatórios" alt="Gera Relatórios" outcome="gerarRelatorio"/>
+                    <p:tooltip id="toolTipFadej" for="btnj" value="Página de Gerar Relatórios" />
+                </div>
+
+                <div id="cadastroFunc" style="background-color: white; width: 345px; height: 500px; float: right">
+                    <div style="border: 1px solid black; border-style: none none solid none ; width: 100%; height: 25px; margin-bottom: 10px">
+                        <h style="width: 100%; display: block; text-align: center; padding-top: 5px ">Listagens</h>
+                    </div>
+                    <h:button id="btne" class="botoes botoessecundario" value="Listar sabores" alt="Lista sabores" outcome="listarSabor"/>
+                    <p:tooltip id="toolTipFadee" for="btne" value="Listagem todos os sabores cadastrados" />
+
+                    <h:button id="btnf" class="botoes botoessecundario" value="Listar pizzas" alt="Lista pizza" outcome="listarPizza"/>
+                    <p:tooltip id="toolTipFadef" for="btnf" value="Listagem todos as pizzas cadastradas." />
+
+                    <h:button id="btng" class="botoes botoessecundario" value="Listar produtos" alt="Lista produto" outcome="listarProduto"/>
+                    <p:tooltip id="toolTipFadeg" for="btng" value="Listagem todos os produtos cadastrados." />
+
+                    <h:button id="btnh" class="botoes botoessecundario" value="Listar funcionários" alt="Lista funcionario" outcome="listarFuncionario"/>
+                    <p:tooltip id="toolTipFadeh" for="btnh" value="Listagem todos os funcionários cadastrados" />
+
+                    <h:button id="btni" class="botoes botoessecundario" value="Listar clientes" alt="Lista funcionario" outcome="listarFuncionario"/>
+                    <p:tooltip id="toolTipFadei" for="btni" value="Listagem todos os usuários cadastrados" />
+                </div>
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
